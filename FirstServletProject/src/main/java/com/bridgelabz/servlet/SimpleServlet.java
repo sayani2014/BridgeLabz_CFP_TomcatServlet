@@ -1,5 +1,5 @@
 /**
- * Purpose : Create First Servlet
+ * UC1 : Create my First Servlet
  * 
  * @author SAYANI KOLEY
  * @since 05.08.2021
@@ -24,8 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 
 /*
  * Purpose : Creating a SimpleServlet class
- * 			 The HttpServlet is an abstract class which contains methods that needs to be overridden 
- * 			 by the SimpleServlet class
+     * 			 The HttpServlet is an abstract class which contains methods that needs to be overridden 
+     * 			 by the SimpleServlet class
  */
 
 public class SimpleServlet extends HttpServlet {
