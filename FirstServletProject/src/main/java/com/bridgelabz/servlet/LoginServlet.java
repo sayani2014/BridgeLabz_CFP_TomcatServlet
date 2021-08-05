@@ -1,6 +1,9 @@
 /**
- * UC3 : Extend the Servlet to accept a valid Name 
- 			- Name starts with Cap and has minimum 3 characters
+ * UC4 : Extend the Servlet to accept a valid Password 
+  		 Rule1 – minimum 8 Characters 
+  		 Rule2 – Should have at least 1 Upper Case
+		 Rule3 – Should have at least 1 numeric number in the password
+		 Rule4 – Has exactly 1 Special Character
  * 
  * @author SAYANI KOLEY
  * @since 05.08.2021
@@ -28,15 +31,15 @@ import javax.servlet.http.HttpServletResponse;
 		description = "Login Servlet Testing",
 		urlPatterns = { "/LoginServlet" },
 		initParams = {
-				@WebInitParam(name = "user", value = "sa"),
-				@WebInitParam(name = "password", value = "BridgeLabz")
+				@WebInitParam(name = "user", value = "Sayani"),
+				@WebInitParam(name = "password", value = "BridgeLabz@2021")
 		}
 )
 
 /*
  * Purpose : Creating a LoginServlet class
- * 			 The HttpServlet is an abstract class which contains methods that needs to be 
- * 			 overridden by the SimpleServlet class
+  			 The HttpServlet is an abstract class which contains methods that needs to be 
+  			 overridden by the SimpleServlet class
  */
 
 public class LoginServlet extends HttpServlet {
@@ -58,11 +61,22 @@ public class LoginServlet extends HttpServlet {
 		
 		/*
 		 * Purpose : Validate username using Regular Expression
-		 * 			 Name starts with Cap and has minimum 3 characters
+		  			 Name starts with Cap and has minimum 3 characters
 		 */
 		
 		String regexName = "^[A-Z]{1}[a-zA-Z]{2,}$";
-		if(userID.equals(user) && userID.matches(regexName) && password.equals(pwd)) {
+		
+		/*
+		 * Purpose : Validate password using Regular Expression
+		  			 Rule1 – minimum 8 Characters 
+		  			 Rule2 – Should have at least 1 Upper Case
+ 					 Rule3 – Should have at least 1 numeric number in the password
+					 Rule4 – Has exactly 1 Special Character
+		 */
+		
+		String regexPassword = "^(?=.*[0-9])(?=[^@#$%^&+=]*[@#$%^&+=][^@#$%^&+=]*$)(?=.*[a-z])(?=.*[A-Z]).{8,}$";
+		
+		if(userID.equals(user) && userID.matches(regexName) && password.equals(pwd) && password.matches(regexPassword)) {
 			req.setAttribute("user", user);
 			req.getRequestDispatcher("LoginSuccess.jsp").forward(req, resp);
 		} else {
