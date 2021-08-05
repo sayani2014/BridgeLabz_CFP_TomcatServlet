@@ -1,5 +1,5 @@
 /**
- * UC1 : Create First Servlet
+ * Purpose : Create First Servlet
  * 
  * @author SAYANI KOLEY
  * @since 05.08.2021
@@ -17,20 +17,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /*
- * Annotation used to declare a servlet. 
+ * Purpose : Annotation used to declare a servlet. 
  */
 
 @WebServlet("/SimpleServlet")
 
 /*
- * Creating a SimpleServlet class
- * The HttpServlet is an abstract class which contains methods that needs to be overridden by the SimpleServlet class
+ * Purpose : Creating a SimpleServlet class
+ * 			 The HttpServlet is an abstract class which contains methods that needs to be overridden 
+ * 			 by the SimpleServlet class
  */
 
 public class SimpleServlet extends HttpServlet {
 	
 	/*
-	 * Method to allow a servlet to handle a GET request. 
+	 * Purpose : Method to allow a servlet to handle a GET request. 
 	 */
 	
 	@Override
