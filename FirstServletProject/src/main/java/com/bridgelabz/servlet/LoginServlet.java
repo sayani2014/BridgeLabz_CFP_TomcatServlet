@@ -1,5 +1,6 @@
 /**
- * UC2 : Create a simple Login with predefined user
+ * UC3 : Extend the Servlet to accept a valid Name 
+ 			- Name starts with Cap and has minimum 3 characters
  * 
  * @author SAYANI KOLEY
  * @since 05.08.2021
@@ -27,15 +28,15 @@ import javax.servlet.http.HttpServletResponse;
 		description = "Login Servlet Testing",
 		urlPatterns = { "/LoginServlet" },
 		initParams = {
-				@WebInitParam(name = "user", value = "Sayani"),
+				@WebInitParam(name = "user", value = "sa"),
 				@WebInitParam(name = "password", value = "BridgeLabz")
 		}
 )
 
 /*
  * Purpose : Creating a LoginServlet class
- * The HttpServlet is an abstract class which contains methods that needs to be 
- * overridden by the SimpleServlet class
+ * 			 The HttpServlet is an abstract class which contains methods that needs to be 
+ * 			 overridden by the SimpleServlet class
  */
 
 public class LoginServlet extends HttpServlet {
@@ -54,7 +55,14 @@ public class LoginServlet extends HttpServlet {
 		//get servlet config init params
 		String userID = getServletConfig().getInitParameter("user");
 		String password = getServletConfig().getInitParameter("password");
-		if(userID.equals(user) && password.equals(pwd)) {
+		
+		/*
+		 * Purpose : Validate username using Regular Expression
+		 * 			 Name starts with Cap and has minimum 3 characters
+		 */
+		
+		String regexName = "^[A-Z]{1}[a-zA-Z]{2,}$";
+		if(userID.equals(user) && userID.matches(regexName) && password.equals(pwd)) {
 			req.setAttribute("user", user);
 			req.getRequestDispatcher("LoginSuccess.jsp").forward(req, resp);
 		} else {
